@@ -10,10 +10,46 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
+    @IBOutlet weak var signUpButton: UIButton!
+    
+    @IBOutlet weak var errorlabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpElements()
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    func setUpElements(){
+        errorlabel.alpha = 0
+        
+        
+        //style the elements
+        Utilities.styleTextField(firstNameTextField)
+        
+        Utilities.styleTextField(lastNameTextField)
+        
+        Utilities.styleTextField(emailTextField)
+        
+        Utilities.styleTextField(passwordTextField)
+        
+        Utilities.styleFilledButton(signUpButton)
+        
+        
+        
+        
+
+        
     }
     
 
@@ -27,4 +63,9 @@ class SignUpViewController: UIViewController {
     }
     */
 
+    @IBAction func signUpTapped(_ sender: Any) {
+        
+        
+    }
+    
 }

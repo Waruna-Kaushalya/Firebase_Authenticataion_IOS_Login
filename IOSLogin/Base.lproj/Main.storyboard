@@ -99,6 +99,9 @@
                                             <constraint firstAttribute="height" constant="40" id="Ikw-cb-BZD"/>
                                         </constraints>
                                         <state key="normal" title="Sign Up"/>
+                                        <connections>
+                                            <action selector="signUpTapped:" destination="Ois-Wm-BRX" eventType="touchUpInside" id="oIA-bj-DTI"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYl-o9-clw">
                                         <rect key="frame" x="0.0" y="300" width="334" height="20.5"/>
@@ -123,6 +126,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MAw-kq-PXk"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="zVF-3P-rL8" id="imj-f2-tVE"/>
+                        <outlet property="errorlabel" destination="aYl-o9-clw" id="yaE-Ah-1hN"/>
+                        <outlet property="firstNameTextField" destination="g6R-9S-LHW" id="7If-o2-zbR"/>
+                        <outlet property="lastNameTextField" destination="jMf-QQ-aAk" id="con-qs-Y39"/>
+                        <outlet property="passwordTextField" destination="An4-2x-2oR" id="OyP-dn-YCP"/>
+                        <outlet property="signUpButton" destination="RWP-Sa-E8j" id="ui0-oC-A2d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qs-F8-Rkc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -156,13 +167,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="KI2-H2-FDp">
                                 <rect key="frame" x="40" y="84" width="334" height="200.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KqR-Xh-lW7">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KqR-Xh-lW7">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PRG-Vj-ufY">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PRG-Vj-ufY">
                                         <rect key="frame" x="0.0" y="60" width="334" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -174,6 +185,9 @@
                                             <constraint firstAttribute="height" constant="40" id="7st-bL-gls"/>
                                         </constraints>
                                         <state key="normal" title=" Login"/>
+                                        <connections>
+                                            <action selector="logginTapped:" destination="24l-mu-rbb" eventType="touchUpInside" id="8dQ-fk-ZZ3"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIt-cg-kNR">
                                         <rect key="frame" x="0.0" y="180" width="334" height="20.5"/>
@@ -196,6 +210,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RZS-oL-kfn"/>
                     </view>
+                    <connections>
+                        <outlet property="errorLabel" destination="aIt-cg-kNR" id="sDx-7s-EbP"/>
+                        <outlet property="firstNameTextField" destination="KqR-Xh-lW7" id="XAS-YM-1vz"/>
+                        <outlet property="lastNameTextField" destination="PRG-Vj-ufY" id="z6D-iD-VoS"/>
+                        <outlet property="loginButton" destination="2ps-2e-Ivg" id="zvT-TD-PVD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLV-3D-lIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
