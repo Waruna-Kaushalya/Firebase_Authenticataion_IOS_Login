@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
+import FirebaseFirestore
+
+
 
 class SignUpViewController: UIViewController {
 
@@ -54,10 +59,7 @@ class SignUpViewController: UIViewController {
     func validateFields() -> String?  {
         //check that all fields are field in
         
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             
             return "Please fill in all fields "
         }
@@ -66,7 +68,7 @@ class SignUpViewController: UIViewController {
         
         if Utilities.isPasswordValid(cleanedPassword) == false {
             //password isn't secure enough
-            return "Please make sure your password is at least 8 characters"
+            return "Please make sure your password is at least 8 characters, contains a special character and number"
         }
         
         
@@ -76,10 +78,128 @@ class SignUpViewController: UIViewController {
 
     @IBAction func signUpTapped(_ sender: Any) {
         //Validate the field
+        let error = validateFields()
         
-        //Create the user
+        if error != nil {
+            //there's somthing wrong with the fields, show error mssage
+           showError(error!)
+            
+        }else{
+            
+            //Create cleared version of the data
+//            let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//
+//            let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//
+//            let email = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//
+//            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//
+//
+//
+//
+//
+//            //Create the user
+//
+//
+//            Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+//
+//
+//                if err != nil {
+//                    //there was an error creating the user
+//                    self.showError("Error creating user")
+//
+//
+//                }else{
+//                    //user was created successfully. now store the first and last name
+//                 let db = Firestore.firestore()
+//
+//
+//                    db.collection("users").addDocument(data: ["firstname":firstName,"lastname":lastName, "Uid": result!.user.uid]) { (error) in
+//                        if error != nil {
+//                            self.showError("User data coudn't ")
+//                        }
+//                    }
+//                         //Transition to the home screen
+//                    self.transitionToHome()
+//                }
+//
+//            }
+//
+//
+//
+//        }
+//
+//
+//
+//    }
+//
+//    func showError(_ message:String) {
+//        errorlabel.text = message
+//        errorlabel.alpha = 1
+//    }
+//
+//    func transitionToHome(){
+//        let homeViewController =  storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
+//
+//        view.window?.rootViewController = homeViewController
+//        view.window?.makeKeyAndVisible()
+//    }
+//
+//}
+
+
+
+            let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            // Create the user
+            Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+                
+                // Check for errors
+                if err != nil {
+                    
+                    // There was an error creating the user
+                    self.showError("Error creating user")
+                }
+                else {
+                    
+                    // User was created successfully, now store the first name and last name
+                    let db = Firestore.firestore()
+                    
+                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
+                        
+                        if error != nil {
+                            // Show error message
+                            self.showError("Error saving user data")
+                        }
+                    }
+                    
+                    // Transition to the home screen
+                    self.transitionToHome()
+                }
+                
+            }
+            
+            
+            
+        }
+    }
+    
+    func showError(_ message:String) {
         
-        //Transition to the home screen
+        errorlabel.text = message
+        errorlabel.alpha = 1
+    }
+    
+    func transitionToHome() {
+        
+        let homeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
         
     }
     

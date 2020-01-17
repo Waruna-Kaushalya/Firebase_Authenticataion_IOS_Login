@@ -228,8 +228,8 @@
         <!--Home View Controller-->
         <scene sceneID="Gac-nV-31b">
             <objects>
-                <viewController id="7y0-iF-yoA" customClass="HomeViewController" customModule="IOSLogin" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gR9-Qh-xUV" customClass="Ho">
+                <viewController storyboardIdentifier="HomeVC" id="7y0-iF-yoA" customClass="HomeViewController" customModule="IOSLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="HomeVC" id="gR9-Qh-xUV" customClass="Ho">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

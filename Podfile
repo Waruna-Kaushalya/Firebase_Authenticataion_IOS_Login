@@ -8,6 +8,8 @@ target 'IOSLogin' do
   # Pods for IOSLogin
 
 pod 'Firebase/Analytics'
-pod 'Firebase/Auth'
+	pod 'Firebase/Auth'	
+	pod 'Firebase/Core'
+	pod 'Firebase/Firestore'
 
 end
