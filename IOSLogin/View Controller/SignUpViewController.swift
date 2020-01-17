@@ -47,19 +47,39 @@ class SignUpViewController: UIViewController {
     }
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //check the fields and validate that the data is correct
+    //If everithing is correct, this method return nill
+    //Otherwise, it return the error msg
+    
+    func validateFields() -> String?  {
+        //check that all fields are field in
+        
+        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            
+            return "Please fill in all fields "
+        }
+         //check if the password is secure
+        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if Utilities.isPasswordValid(cleanedPassword) == false {
+            //password isn't secure enough
+            return "Please make sure your password is at least 8 characters"
+        }
+        
+        
+        return nil
+        
     }
-    */
 
     @IBAction func signUpTapped(_ sender: Any) {
+        //Validate the field
         
+        //Create the user
+        
+        //Transition to the home screen
         
     }
     
